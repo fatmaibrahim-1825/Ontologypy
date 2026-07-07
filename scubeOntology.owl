@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#"
+     xml:base="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:scube="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_concept -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_concept">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_follow -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_follow">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_is_a -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_is_a">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_part -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_part">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_prereq -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_prereq">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_subdomain -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_subdomain">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_superdomain -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_superdomain">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_terminology -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#has_terminology">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#instance_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#instance_of">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#parent_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#parent_of">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#depth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#depth">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#description -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#description">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Concept"/>
+    
+
+
+    <!-- http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#Domain"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

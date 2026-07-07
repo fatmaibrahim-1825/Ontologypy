@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1618963423529" name="http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology" uri="scubeOntology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1618963423529" name="shadowed:http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology" uri="cdk.out/asset.556e3dfb3a26fdc4dcb7dd761c007731b119031c38ff4c3854ded44823aea092/scubeOntology.owl"/>
+    </group>
+</catalog>

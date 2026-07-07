@@ -1,0 +1,221 @@
+Queries:
+  GetAllDomains: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        ?domainIRI    rdf:type            so:Domain;
+                      so:id               ?id;
+                      so:name             ?name;
+        # OPTIONAL { ?domainIRI    so:description    ?description}
+        # OPTIONAL { ?domainIRI    so:has_subdomain  ?subdomain}
+    }
+
+  GetDomain: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        ?domainIRI    rdf:type            so:Domain;
+                      so:id               "ID";
+                      so:name             ?name.
+        OPTIONAL { ?domainIRI   so:description      ?description }
+    }
+    LIMIT 1
+
+  GetDomainByName: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        ?domainIRI    rdf:type            so:Domain;
+                      so:id               ?id;
+                      so:name             "DOMAIN_NAME"@en
+    }
+
+  GetSubDomains: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        ?domainIRI    rdf:type            so:Domain;
+                      so:id               "ID";
+                      so:has_subdomain    ?subdomain.
+        ?subdomain    so:id               ?id;
+                      so:name             ?name;
+        # OPTIONAL {?subdomain   so:description   ?description}
+    }
+
+  AddNewDomain: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    INSERT DATA {
+        so:ID          rdf:type          so:Domain;
+                       so:id             "ID";
+                       so:name           "NAME"@en;
+                       so:description    "DESCRIPTION"@en;
+    }
+
+  DeleteDomain: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    DELETE WHERE {
+        ?domainIRI    rdf:type            so:Domain;
+                      so:id               "ID";
+                      ?p  ?o;
+                      # so:name             ?name;
+        # OPTIONAL { ?domainIRI    so:description      ?description;}
+    }
+
+  RemoveDomain: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    DELETE WHERE {
+         ?domain       so:has_subdomain    so:ID
+    }
+
+  GetAllConcepts: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        so:ID          so:has_concept       ?conceptIRI .
+        ?conceptIRI    so:id                ?id;
+                       so:name              ?name;
+    }
+
+  GetConcept: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        ?conceptIRI    rdf:type         so:Concept;
+                       so:id            "ID";
+                       so:name          ?name .
+        OPTIONAL {?conceptIRI  so:description  ?description}
+        OPTIONAL {?conceptIRI  so:depth  ?depth}
+
+        ?domainIRI     so:id            "DOMAIN_ID";
+                       so:has_concept   ?conceptIRI
+    }
+    LIMIT 1
+
+  GetConceptByName: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        ?conceptIRI    rdf:type         so:Concept;
+                       so:id            ?id;
+                       so:name          "NAME"@en;
+                       so:description   ?description;
+                       so:depth         ?depth .
+        ?domainIRI     so:id            "DOMAIN_ID";
+                       so:has_concept   ?conceptIRI
+    }
+    LIMIT 1
+
+  DeleteConcept: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so: <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    DELETE WHERE {
+        ?conceptIRI    rdf:type            so:Concept;
+                       so:id               "ID";
+                       so:name             ?name;
+                       so:description      ?description;
+                       so:depth            ?depth .
+        so:DOMAIN_ID   so:has_concept      ?conceptIRI;
+    }
+
+  Add_Relation: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    INSERT DATA {
+         so:CONCEPT1    so:RELATION       so:CONCEPT2;
+    }
+
+  Get_Relation: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        so:CONCEPT_ID     so:RELATION                  ?objectIRI .
+        ?objectIRI        so:id                        ?id;
+                          so:name                      ?name;
+    }
+
+  Get_Concept_Tree: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        so:DOMAIN_ID     so:has_concept      so:ID .
+        so:ID            so:has_is_a           ?o;
+                         so:has_part           ?x;
+                         so:part_of            ?l;
+                         so:has_follow         ?v
+    }
+
+  GetDomainRootConcepts: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        so:DOMAIN_ID    so:has_concept       ?conceptIRI .
+        ?conceptIRI     so:id                ?id ;
+                        so:name             ?name;
+                        so:has_part         ?part;
+                        so:is_root_in       so:DOMAIN_ID.
+    OPTIONAL { ?conceptIRI     so:description      ?description;}
+    OPTIONAL { ?conceptIRI     so:depth            ?depth .}
+    }
+
+  GetParentDomains: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        ?domainId   so:has_subdomain       ?subdomain;
+                    so:id                  ?id ;
+                    so:name             ?name;
+         OPTIONAL { ?domainId    so:description      ?description;}
+    }
+
+  #FILTER (LANG(?comment)='en')
+
+  Get_Concept_keywords: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    SELECT * WHERE {
+        ?conceptIRI    rdf:type         so:Concept;
+                       so:id            "CONCEPT_ID";
+                       so:keyword       ?keyword.
+        ?keyword       so:term          ?term;
+                       so:definition    ?definition.
+        ?domainIRI     so:id            "DOMAIN_ID";
+                       so:has_concept   ?conceptIRI
+    }
+
+  Add_Concept_Keyword: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    INSERT DATA {
+        so:KEYWORD_ID   so:term           "TERM";
+                        so:definition     "DEFINITION".
+        so:CONCEPT_ID   so:id             "CONCEPT_ID";
+                        so:keyword        so:KEYWORD_ID.
+        so:DOMAIN_ID    so:has_concept    so:CONCEPT_ID
+    }
+
+  Query: |
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX so:  <http://www.semanticweb.org/fatma/ontologies/2021/3/scubeOntology#>
+    STATEMENTS

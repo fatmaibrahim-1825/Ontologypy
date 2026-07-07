@@ -1,0 +1,38 @@
+{
+  "app": "python3 cdk.py",
+  "context": {
+    "@aws-cdk/core:enableStackNameDuplicates": "true",
+    "aws-cdk:enableDiffNoFail": "true",
+    "@aws-cdk/core:stackRelativeExports": "true",
+    "environment": {
+      "account": "879566874708",
+      "region": "eu-west-1"
+    },
+    "parameters": {
+      "all": {
+        "tags": [
+          {
+            "key": "Organization",
+            "value": "SCube"
+          },
+          {
+            "key": "Project",
+            "value": "EduEdges"
+          }
+        ]
+      },
+      "vpc": {
+        "lookupTags": {
+          "Name": "SCubeVPC"
+        }
+      },
+      "lambda": {
+        "environment_variables": {
+          "fusekiURL": "http://41.0.22.84:3030/scubeOntology",
+          "urlPrefix": "/api/ontologypy"
+        },
+        "memory_size": 256
+      }
+    }
+  }
+}
